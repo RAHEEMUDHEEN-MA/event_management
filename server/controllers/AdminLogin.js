@@ -3,12 +3,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Admin = require("../models/AdminScehma");
 
-const AdminLogin = async (req, res) => {
-//   const { username, password } = req.body;
+const AdminLogin = async (req, res) => {   const { username, password } = req.body;
 
   try {
-    const userdata = await Admin.findOne({ username:"admin" });
-    if (userdata && (await bcrypt.compare("password", userdata.password))) {
+    const userdata = await Admin.findOne({ username:admin });
+    if (userdata && (await bcrypt.compare(password, userdata.password))) {
       const token = genarateToken(userdata._id);
       res
         .status(200)
